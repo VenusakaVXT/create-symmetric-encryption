@@ -123,7 +123,7 @@ const App = () => {
             } else if (col1 === col2) {
                 output += table[(row1 - 1 + 5) % 5][col1] + table[(row2 - 1 + 5) % 5][col2]
             } else {
-                output += table[row1][col2] + table[row2][col1] 
+                output += table[row1][col2] + table[row2][col1]
             }
         }
 
@@ -191,7 +191,7 @@ const App = () => {
 
     return (
         <>
-            <div style={{
+            <div className="container" style={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -201,52 +201,36 @@ const App = () => {
                 <h1 style={{ color: "#ff0000", fontWeight: 400, fontSize: "2.5em" }}>
                     Create Symmetric Encryption - CSE
                 </h1>
-                <div style={{ width: 840 }}>
-                    <div style={{ width: 720, marginBottom: "12px", display: "flex", justifyContent: "space-between" }}>
-                        <span>
+                <div className="content-wrapper" style={{ width: 840 }}>
+                    <div className="cipher-selection" style={{ width: 720, marginBottom: "12px", display: "flex" }}>
+                        <span style={{ marginRight: "10px" }}>
                             Select {eOrD ? "encryption" : "decryption"}
                             <span style={{ marginLeft: "2px", cursor: "pointer" }} onClick={() => setEOrD(!eOrD)}>
                                 🔁
                             </span>:
                         </span>
-                        <div>
-                            <input
-                                type="radio"
-                                id="caesar"
-                                name="select-item"
-                                value="caesar"
-                                checked={selectedCipher === "caesar"}
-                                onChange={(e) => handleCipherChange(e.target.value)}
-                            />
-                            <label style={{ cursor: "pointer" }} htmlFor="caesar">Caesar</label>
-                        </div>
-                        <div>
-                            <input
-                                type="radio"
-                                id="monoalphabetic"
-                                name="select-item"
-                                value="monoalphabetic"
-                                checked={selectedCipher === "monoalphabetic"}
-                                onChange={(e) => handleCipherChange(e.target.value)}
-                            />
-                            <label style={{ cursor: "pointer" }} htmlFor="monoalphabetic">Monoalphabetic</label>
-                        </div>
-                        <div>
-                            <input
-                                type="radio"
-                                id="playfair"
-                                name="select-item"
-                                value="playfair"
-                                checked={selectedCipher === "playfair"}
-                                onChange={(e) => handleCipherChange(e.target.value)}
-                            />
-                            <label style={{ cursor: "pointer" }} htmlFor="playfair">Playfair</label>
+                        <div className="radio-group" style={{ width: "50%", display: "flex", justifyContent: "space-between" }}>
+                            {["caesar", "monoalphabetic", "playfair"].map((cipher) => (
+                                <div key={cipher}>
+                                    <input
+                                        type="radio"
+                                        id={cipher}
+                                        name="select-item"
+                                        value={cipher}
+                                        checked={selectedCipher === cipher}
+                                        onChange={(e) => handleCipherChange(e.target.value)}
+                                    />
+                                    <label style={{ cursor: "pointer" }} htmlFor={cipher}>
+                                        {cipher.charAt(0).toUpperCase() + cipher.slice(1)}
+                                    </label>
+                                </div>
+                            ))}
                         </div>
                     </div>
                     <form onSubmit={handleExecute}>
-                        <div style={{ display: "flex", marginBottom: "24px" }}>
+                        <div className="input-group" style={{ display: "flex", marginBottom: "24px" }}>
                             <div className="label-wrapper">
-                                <label for="inputStr">Input String ({eOrD ? "P" : "C"}):</label>
+                                <label htmlFor="inputStr">Input String ({eOrD ? "P" : "C"}):</label>
                             </div>
                             <input
                                 value={inputStr}
@@ -258,9 +242,9 @@ const App = () => {
                                 placeholder="Please enter input string here..."
                             />
                         </div>
-                        <div style={{ display: "flex" }}>
+                        <div className="input-group input-key" style={{ display: "flex" }}>
                             <div className="label-wrapper">
-                                <label for="key">Key (k):</label>
+                                <label htmlFor="key">Key (k):</label>
                             </div>
                             <input
                                 value={key}
@@ -273,14 +257,14 @@ const App = () => {
                                 disabled={isKeyDisabled}
                             />
                         </div>
-                        <span style={{ fontStyle: "italic", fontSize: "16px", marginLeft: "190px" }}>
+                        <span className="note-txt" style={{ fontStyle: "italic", fontSize: "16px", marginLeft: "190px" }}>
                             (This key k isn't entered for Monoalphabetic Cipher)
                         </span>
-                        <div style={{ display: "flex", marginTop: "12px" }}>
-                            <div className="label-wrapper"><label for="">Output String ({eOrD ? "C" : "P"}):</label></div>
+                        <div className="input-group" style={{ display: "flex", marginTop: "12px" }}>
+                            <div className="label-wrapper"><label htmlFor="">Output String ({eOrD ? "C" : "P"}):</label></div>
                             <span>{outputStr}</span>
                         </div>
-                        <div style={{ display: "flex", justifyContent: "center", marginTop: "12px" }}>
+                        <div className="btn-group" style={{ display: "flex", justifyContent: "center", marginTop: "12px" }}>
                             <button className="btn" onClick={handleReset} type="button">Reset</button>
                             <button className="btn excute-btn" type="submit">Execute</button>
                         </div>

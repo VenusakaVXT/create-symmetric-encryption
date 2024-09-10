@@ -1,6 +1,7 @@
 html, body {
     height: 100%;
     margin: 0;
+    font-family: Arial, sans-serif;
 }
 
 span, label {
@@ -48,4 +49,78 @@ input[type="text"], input[type="number"] {
 
 .btn.excute-btn:hover {
     background: #30a14e;
+}
+
+@media (max-width: 768px) {
+    .container {
+        height: auto !important;
+        padding: 20px 10px;
+    }
+
+    h1 {
+        font-size: 1.8em !important;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    span, label {
+        font-size: 16px;
+    }
+
+    .content-wrapper {
+        width: 100% !important;
+    }
+
+    .cipher-selection {
+        width: 100% !important;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cipher-selection > div {
+        margin-top: 10px;
+    }
+
+    .radio-group {
+        flex-direction: column;
+    }
+
+    .input-group {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 12px !important;
+    }
+
+    .label-wrapper {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"], input[type="number"] {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .input-key {
+        margin-bottom: 0 !important;
+    }
+
+    .note-txt {
+        margin-left: 0 !important;
+        font-size: 14px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .btn.excute-btn {
+        margin-left: 0;
+    }
 }
