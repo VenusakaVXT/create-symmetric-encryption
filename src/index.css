@@ -1,0 +1,51 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+span, label {
+    line-height: 1.6;
+    font-size: 20px;
+}
+
+.label-wrapper {
+    width: 190px;
+}
+
+input[type="radio" i] {
+    margin: 0;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+input[type="text"], input[type="number"] {
+    width: 70%;
+    font-size: 20px;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.btn {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 150ms linear 0s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.btn.excute-btn {
+    background: #40c463;
+    color: #fff;
+    margin-left: 8px;
+}
+
+.btn.excute-btn:hover {
+    background: #30a14e;
+}
